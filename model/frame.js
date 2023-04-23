@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 const frameSchema = new Schema({
-    heatmap: { type: String},
-    traces: { type: String },
+    heatmap: { type: Buffer},
+    traces: { type: Buffer },
     orgName: { type: String},
     gameID: { type: String}
   

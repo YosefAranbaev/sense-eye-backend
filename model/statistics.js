@@ -1,7 +1,7 @@
 const {Schema, model} = require('mongoose');
 const statisticsSchema = new Schema({
-    timestamp: { type: Date, default: Date.now },
-    mode: { type: String },
+    status: { type: String},
+    ballHoldersList: { type: String },
     orgName: { type: String}
   
 } ,{collection:'Statistics'});
