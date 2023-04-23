@@ -3,6 +3,8 @@ const { backendRouter } = require('./routers/backendRouter');
 const { orgRouter } = require('./routers/orgRouter');
 const { userRouter } = require('./routers/userRouter');
 const { gameRouter } = require('./routers/gameRouter');
+const { recRouter } = require('./routers/recRouter');
+const { frameRouter } = require('./routers/frameRouter');
 
 const app = express();
 const port = process.env.PORT || 8080;
@@ -19,6 +21,8 @@ app.use('/api/service', backendRouter);
 app.use('/api/organization', orgRouter);
 app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
+app.use('/api/rec', recRouter);
+app.use('/api/frames', frameRouter);
 
 
 app.use('*', (req, res) => {
