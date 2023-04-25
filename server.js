@@ -7,7 +7,7 @@ const { recRouter } = require('./routers/recRouter');
 const { frameRouter } = require('./routers/frameRouter');
 
 const app = express();
-const port = process.env.PORT || 8080;
+const port = process.env.PORT || 8000;
 
 if(process.env.ENV === 'development') {
     const logger = require('morgan');
