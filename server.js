@@ -5,6 +5,8 @@ const { userRouter } = require('./routers/userRouter');
 const { gameRouter } = require('./routers/gameRouter');
 const { recRouter } = require('./routers/recRouter');
 const { frameRouter } = require('./routers/frameRouter');
+const {statisticsRouter} = require('./routers/statisticsRouter')
+
 
 const app = express();
 const port = process.env.PORT || 8000;
@@ -23,7 +25,7 @@ app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
 app.use('/api/rec', recRouter);
 app.use('/api/frames', frameRouter);
-
+app.use('/api/statistics', statisticsRouter);
 
 app.use('*', (req, res) => {
     res.status(404).json({'error': 'Page Not Found'});

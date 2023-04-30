@@ -34,10 +34,8 @@ exports.recController = {
   },
 
   addrecomendation(req, res) {
-    const { status, orgName, gameID } = req.body;
-    frame = "kk"
-    console.log(status, frame, orgName, gameID )
-    // console.log(req)
+    const { status, frame, orgName, gameID } = req.body;
+
     if (!status || !frame || !orgName || !gameID) {
         if (!status) {
             console.log('status');
