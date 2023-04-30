@@ -1,5 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
+const cors = require('cors');
+
 const { backendRouter } = require('./routers/backendRouter');
 const { orgRouter } = require('./routers/orgRouter');
 const { userRouter } = require('./routers/userRouter');
@@ -23,6 +25,7 @@ app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
+app.use(cors());
 
 app.use('/api/service', backendRouter);
 app.use('/api/organization', orgRouter);
