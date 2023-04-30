@@ -1,10 +1,7 @@
 const { Schema, model } = require('mongoose');
 const recSchema = new Schema({
-    status: { type: String },
-    frame: {
-        data: Buffer,
-        contentType: String
-      },
+    status: { type: Number },
+    frame: {type : String      },
     orgName: { type: String },
     gameID: { type: String }
 
