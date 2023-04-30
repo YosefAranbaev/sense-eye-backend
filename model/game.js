@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 const gameSchema = new Schema({
-    timestamp: { type: Date, default: Date.now },
+    timestamp: { type: String },
     mode: { type: String },
     orgName: { type: String}
   

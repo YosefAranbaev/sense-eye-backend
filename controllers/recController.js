@@ -36,8 +36,8 @@ exports.recController = {
   addrecomendation(req, res) {
     const { status, frame, orgName, gameID } = req.body;
 
-    if (!status || !frame || !orgName || !gameID) {
-        if (!status) {
+    if (status === null || !frame || !orgName || !gameID) {
+        if (status === null) {
             console.log('status');
         }
         if (!frame) {

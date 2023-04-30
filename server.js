@@ -1,4 +1,5 @@
 const express = require('express');
+const bodyParser = require('body-parser');
 const { backendRouter } = require('./routers/backendRouter');
 const { orgRouter } = require('./routers/orgRouter');
 const { userRouter } = require('./routers/userRouter');
@@ -15,6 +16,10 @@ if(process.env.ENV === 'development') {
     const logger = require('morgan');
     app.use(logger('dev'));
 }
+
+// Set maximum payload size limit to 50MB
+app.use(bodyParser.json({ limit: '50mb' }));
+app.use(bodyParser.urlencoded({ limit: '50mb', extended: true }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
