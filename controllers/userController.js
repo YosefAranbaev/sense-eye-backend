@@ -44,6 +44,13 @@ exports.userController = {
     }
 
     try {
+      // Check if email already exists in database
+      const user = await User.findOne({ email });
+      if (user) {
+        res.status(409);
+        return res.json(`Email already exists`);
+      }
+
       const hashedPassword = await bcrypt.hash(password, 10);
       const newUser = new User({
         name,
@@ -59,7 +66,6 @@ exports.userController = {
       res.json(`Error saving data to db: ${err}`);
     }
   },
-
   async deleteUserByEmail(req, res) {
     const email = req.params.email;
     try {
