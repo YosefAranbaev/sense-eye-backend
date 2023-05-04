@@ -2,7 +2,7 @@ const bcrypt = require('bcrypt');
 const User = require('../model/user');
 const jwt = require('jsonwebtoken');
 const { authenticateToken, authorize } = require('../auth');
-const secretKey = 'my-secret-key';
+const secretKey = 'my-secret-key'; // TODO - PUT IN ENV
 
 exports.userController = {
   async getAllUsers(req, res) {
@@ -143,9 +143,8 @@ exports.userController = {
         res.status(401);
         return res.json(`Incorrect password`);
       }
-
       const accessToken = jwt.sign({ email: email }, secretKey);
-      res.status(200).json({ accessToken: accessToken });
+      res.status(200).json({ accessToken: accessToken, email: email, orgName: user.orgName, role: user.role, name: user.name });
     } catch (err) {
       res.status(400);
       res.json(`Error logging in: ${err}`);
