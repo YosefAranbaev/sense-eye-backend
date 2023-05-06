@@ -2,7 +2,9 @@ const bcrypt = require('bcrypt');
 const User = require('../model/user');
 const jwt = require('jsonwebtoken');
 const { authenticateToken, authorize } = require('../auth');
-const secretKey = 'my-secret-key'; // TODO - PUT IN ENV
+const consts = require('../constants');
+const { SECRET_KEY } = consts;
+const secretKey = SECRET_KEY;
 
 exports.userController = {
   async getAllUsers(req, res) {
