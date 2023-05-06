@@ -16,7 +16,7 @@ exports.recController = {
 
   getUserByGameID(req, res) {
     const gameID = req.params.gameID;
-    Rec.findOne({ gameID })
+    Rec.find({ gameID })
       .then(doc => {
         console.log(doc);
         if (!doc) {
@@ -37,20 +37,20 @@ exports.recController = {
     const { status, frame, orgName, gameID } = req.body;
 
     if (status === null || !frame || !orgName || !gameID) {
-        if (status === null) {
-            console.log('status');
-        }
-        if (!frame) {
-            console.log('frame');
-        }
-        if (!orgName) {
-            console.log('orgName');
-        }
-        if (!gameID) {
-            console.log('gameID');
-        }
-        res.status(400);
-        return res.json(`Missing required parameter(s) in request body`);
+      if (status === null) {
+        console.log('status');
+      }
+      if (!frame) {
+        console.log('frame');
+      }
+      if (!orgName) {
+        console.log('orgName');
+      }
+      if (!gameID) {
+        console.log('gameID');
+      }
+      res.status(400);
+      return res.json(`Missing required parameter(s) in request body`);
     }
     const newRec = new Rec({
       status,
@@ -88,5 +88,28 @@ exports.recController = {
         res.status(400);
         res.json(`Error getting data from db: ${err}`);
       });
-}
+  },
+  updateStatusByRecId(req, res) {
+    const recId = req.params.recId;
+    const { status } = req.body;
+
+    if (status === null) {
+      res.status(400);
+      return res.json(`Missing required parameter(s) in request body`);
+    }
+
+    Rec.findByIdAndUpdate(recId, { status }, { new: true })
+      .then(updatedRec => {
+        if (!updatedRec) {
+          res.status(404);
+          return res.json(`Recommendation with id ${recId} not found`);
+        }
+        res.status(200);
+        res.json(updatedRec);
+      })
+      .catch(err => {
+        res.status(400);
+        res.json(`Error updating recommendation: ${err}`);
+      });
+  }
 };
