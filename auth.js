@@ -1,3 +1,4 @@
+const consts = require('./constants')
 const jwt = require('jsonwebtoken');
 const { SECRET_KEY } = consts;
 const secretKey = SECRET_KEY;
