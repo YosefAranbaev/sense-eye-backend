@@ -3,7 +3,13 @@ const Rec = require('../model/recomendation');
 
 exports.recController = {
   getAllrecomendations(req, res) {
+    const page = parseInt(req.query.page) || 1;
+    const pageSize = parseInt(req.query.page_size) || 10;
+    const skip = (page - 1) * pageSize;
+
     Rec.find({})
+      .skip(skip)
+      .limit(pageSize)
       .then(docs => {
         console.log(docs);
         res.status(200).json(docs);
@@ -13,6 +19,7 @@ exports.recController = {
         res.json(`Error getting data from db: ${err}`);
       });
   },
+
 
   getUserByGameID(req, res) {
     const gameID = req.params.gameID;
