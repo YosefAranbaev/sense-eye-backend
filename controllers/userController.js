@@ -136,16 +136,19 @@ exports.userController = {
 
     try {
       const user = await User.findOne({ email: email });
+      console.log(user)
       if (!user) {
         res.status(401);
         return res.json(`User not found`);
       }
       const match = await bcrypt.compare(password, user.password);
+      console.log(match)
       if (!match) {
         res.status(401);
         return res.json(`Incorrect password`);
       }
       const accessToken = jwt.sign({ email: email }, secretKey);
+      console.log(accessToken)
       res.status(200).json({ accessToken: accessToken, email: email, orgName: user.orgName, role: user.role, name: user.name });
     } catch (err) {
       res.status(400);
