@@ -5,6 +5,6 @@ const statisticsSchema = new Schema({
     gameID: { type: String }  
 } ,{collection:'Statistics'});
 
-const Statistics = model('Statistics',statisticsSchema)
+const Statistics = model('statistics',statisticsSchema)
 
 module.exports = Statistics;
