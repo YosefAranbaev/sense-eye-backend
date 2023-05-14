@@ -3,7 +3,7 @@ const statisticsSchema = new Schema({
     frame: {type : String},
     orgName: { type: String },
     gameID: { type: String }  
-} ,{collection:'Statistics'});
+} ,{collection:'statistics'});
 
 const Statistics = model('statistics',statisticsSchema)
 
