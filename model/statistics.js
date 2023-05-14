@@ -1,6 +1,6 @@
 const {Schema, model} = require('mongoose');
 const statisticsSchema = new Schema({
-    status: { type: String},
+    frame: {type : String},
     orgName: { type: String },
     gameID: { type: String }  
 } ,{collection:'Statistics'});
