@@ -10,7 +10,6 @@ const { gameRouter } = require('./routers/gameRouter');
 const { recRouter } = require('./routers/recRouter');
 const { frameRouter } = require('./routers/frameRouter');
 const { statisticsRouter } = require('./routers/statisticsRouter')
-
 const app = express();
 const port = process.env.PORT || 8000;
 
@@ -30,8 +29,8 @@ app.use((req, res, next) => {
     // Allow requests from any origin
     res.setHeader('Access-Control-Allow-Origin', '*');
     next();
-  });
-  
+});
+
 app.use('/api/service', backendRouter);
 app.use('/api/organization', orgRouter);
 app.use('/api/users', userRouter);

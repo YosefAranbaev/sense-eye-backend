@@ -80,6 +80,26 @@ exports.recController = {
   },
   getRecByOrgName(req, res) {
     const orgName = req.params.orgName;
+    console.log(orgName)
+    console.log(orgName)
+    Rec.find({ orgName: orgName })
+      .then(docs => {
+        console.log(docs);
+        if (docs.length === 0) {
+          res.status(404);
+          res.json(`No recomendations found for organization with name ${orgName}`);
+        } else {
+          res.status(200);
+          res.json(docs);
+        }
+      })
+      .catch(err => {
+        res.status(400);
+        res.json(`Error getting data from db: ${err}`);
+      });
+  },
+  getChart(req, res) {
+    const orgName = req.params.orgName;
     Rec.find({ orgName: orgName })
       .then(docs => {
         console.log(docs);
@@ -99,7 +119,6 @@ exports.recController = {
   updateStatusByRecId(req, res) {
     const recId = req.params.recId;
     const { status } = req.body;
-
     if (status === null) {
       res.status(400);
       return res.json(`Missing required parameter(s) in request body`);
@@ -111,6 +130,7 @@ exports.recController = {
           res.status(404);
           return res.json(`Recommendation with id ${recId} not found`);
         }
+        console.log(updatedRec)
         res.status(200);
         res.json(updatedRec);
       })
