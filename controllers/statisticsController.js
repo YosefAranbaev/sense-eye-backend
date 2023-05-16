@@ -15,7 +15,7 @@ exports.statisticsController = {
 
   getstatisticsByGameID(req, res) {
     const gameID = req.params.gameID;
-    Statistics.findOne({ gameID: gameID })
+    Statistics.find({ gameID: gameID })
       .then(doc => {
         console.log(doc);
         if (!doc) {
@@ -33,14 +33,14 @@ exports.statisticsController = {
   },
 
   addstatistic(req, res) {
-    const { status, orgName, gameID } = req.body;
-    if (!status || !orgName || !gameID) {
+    const { frame, orgName, gameID } = req.body;
+    if (!frame || !orgName || !gameID) {
       res.status(400);
       res.json(`Missing required fields`);
       return;
     }
     const newStatistic = new Statistics({
-      status,
+      frame,
       orgName,
       gameID
     });

@@ -1,10 +1,10 @@
 const {Schema, model} = require('mongoose');
 const statisticsSchema = new Schema({
-    status: { type: String},
+    frame: {type : String},
     orgName: { type: String },
     gameID: { type: String }  
-} ,{collection:'Statistics'});
+} ,{collection:'statistics'});
 
-const Statistics = model('Statistics',statisticsSchema)
+const Statistics = model('statistics',statisticsSchema)
 
 module.exports = Statistics;
