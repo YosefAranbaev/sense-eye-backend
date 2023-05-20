@@ -15,6 +15,7 @@ exports.statisticsController = {
 
   getstatisticsByGameID(req, res) {
     const gameID = req.params.gameID;
+    console.log(gameID);
     Statistics.find({ gameID: gameID })
       .then(doc => {
         console.log(doc);

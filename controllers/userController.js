@@ -46,6 +46,7 @@ exports.userController = {
     }
 
     try {
+      console.log(req.body)
       // Check if email already exists in database
       const user = await User.findOne({ email });
       if (user) {

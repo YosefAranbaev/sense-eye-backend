@@ -4,7 +4,7 @@ const Rec = require('../model/recomendation');
 exports.recController = {
   getAllrecomendations(req, res) {
     const page = parseInt(req.query.page) || 1;
-    const pageSize = parseInt(req.query.page_size) || 10;
+    const pageSize = parseInt(req.query.page_size) || 30;
     const skip = (page - 1) * pageSize;
 
     Rec.find({})
