@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cors = require('cors');
 const router = express.Router();
 
-const { backendRouter } = require('./routers/backendRouter');
 const { orgRouter } = require('./routers/orgRouter');
 const { userRouter } = require('./routers/userRouter');
 const { gameRouter } = require('./routers/gameRouter');
@@ -31,7 +30,6 @@ app.use((req, res, next) => {
     next();
 });
 
-app.use('/api/service', backendRouter);
 app.use('/api/organization', orgRouter);
 app.use('/api/users', userRouter);
 app.use('/api/games', gameRouter);
